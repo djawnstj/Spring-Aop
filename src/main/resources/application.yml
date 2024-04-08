@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: aop
+
+  main:
+    allow-circular-references: true

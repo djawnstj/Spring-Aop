@@ -1,2 +1,4 @@
-package hello.aop.member.annotation;public class ClassAop {
+package hello.aop.member.annotation;
+
+public class ClassAop {
 }

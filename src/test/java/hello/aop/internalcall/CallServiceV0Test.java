@@ -1,7 +1,6 @@
-package hello.aop.exam;
+package hello.aop.internalcall;
 
-import hello.aop.exam.aop.RetryAspect;
-import hello.aop.exam.aop.TraceAspect;
+import hello.aop.internalcall.aop.CallLogAspect;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,19 +11,21 @@ import org.springframework.context.annotation.Import;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
-@Import({TraceAspect.class, RetryAspect.class})
+@Import(CallLogAspect.class)
 @SpringBootTest
-class ExamTest {
+class CallServiceV0Test {
 
     @Autowired
-    private ExamService examService;
+    private CallServiceV0 callServiceV0;
 
     @Test
-    public void test() throws Exception {
-        for (int i = 0; i < 5; i++) {
-            log.info("client request i = {}", i);
-            examService.request("data" + i);
-        }
+    public void external() throws Exception {
+        callServiceV0.external();
+    }
+
+    @Test
+    public void internal() throws Exception {
+        callServiceV0.internal();
     }
 
 }
